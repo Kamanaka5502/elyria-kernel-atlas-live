@@ -1,0 +1,176 @@
+.kernel-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.kernel-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 10%, rgba(94,239,255,.20), transparent 32%), linear-gradient(120deg, transparent, rgba(255,255,255,.08), transparent);
+  transform: translateX(-120%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.kernel-card.preview-card::before,
+.kernel-card.active-card::before {
+  opacity: 1;
+  animation: cardSweep 1.4s ease-out;
+}
+
+@keyframes cardSweep {
+  from { transform: translateX(-120%); }
+  to { transform: translateX(120%); }
+}
+
+.kernel-card.active-card {
+  transform: translateY(-8px) scale(1.018);
+  border-color: rgba(255,211,106,.88);
+  background: linear-gradient(135deg, rgba(255,211,106,.12), rgba(94,239,255,.08), rgba(167,139,250,.10));
+  box-shadow: 0 0 0 1px rgba(255,211,106,.18), 0 18px 48px rgba(255,211,106,.12), inset 0 0 42px rgba(94,239,255,.045);
+}
+
+.kernel-card.active-card strong {
+  color: var(--gold);
+  text-shadow: 0 0 18px rgba(255,211,106,.28);
+}
+
+.kernel-card.preview-card {
+  border-color: rgba(94,239,255,.62);
+  background: rgba(94,239,255,.06);
+}
+
+.live-badge {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  color: #061018;
+  background: linear-gradient(135deg, var(--gold), var(--green));
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: .14em;
+  padding: 5px 8px;
+  box-shadow: 0 0 18px rgba(255,211,106,.38);
+  animation: badgePulse 1.7s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+  50% { filter: brightness(1.26); transform: scale(1.04); }
+}
+
+.card-trace {
+  margin-top: 14px;
+  border-top: 1px solid rgba(255,255,255,.10);
+  padding-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+  animation: traceRise .28s ease-out;
+}
+
+.card-trace span {
+  border: 1px solid rgba(94,239,255,.22);
+  border-radius: 999px;
+  padding: 5px 8px;
+  background: rgba(94,239,255,.05);
+}
+
+.card-trace b {
+  color: var(--gold);
+  text-shadow: 0 0 12px rgba(255,211,106,.42);
+}
+
+@keyframes traceRise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.active-node {
+  border-color: var(--gold) !important;
+  color: var(--gold) !important;
+  background: rgba(255,211,106,.13) !important;
+  box-shadow: 0 0 32px rgba(255,211,106,.45), inset 0 0 20px rgba(94,239,255,.12) !important;
+}
+
+.node-flash {
+  animation: nodeBurst .55s ease-out, nodePulse 2.4s ease-in-out infinite !important;
+}
+
+@keyframes nodeBurst {
+  0% { transform: translate(-50%, -50%) scale(.92); }
+  55% { transform: translate(-50%, -50%) scale(1.22); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.panel-flash {
+  animation: panelFlash .72s ease-out;
+}
+
+@keyframes panelFlash {
+  0% { box-shadow: 0 0 0 rgba(255,211,106,0), 0 24px 80px rgba(0,0,0,.34); }
+  40% { box-shadow: 0 0 42px rgba(255,211,106,.22), 0 24px 80px rgba(0,0,0,.34); }
+  100% { box-shadow: 0 24px 80px rgba(0,0,0,.34); }
+}
+
+.stage-flash {
+  animation: stageFlash .85s ease-out;
+}
+
+@keyframes stageFlash {
+  0% { filter: brightness(1); }
+  40% { filter: brightness(1.25) saturate(1.2); }
+  100% { filter: brightness(1); }
+}
+
+.proof-band {
+  isolation: isolate;
+}
+
+.proof-band::after {
+  content: "INSTALLABLE PROOF · RECEIPT · REPLAY · EXPLAINABILITY";
+  position: absolute;
+  left: -10%;
+  bottom: 12px;
+  width: 120%;
+  color: rgba(94,239,255,.16);
+  font-size: 11px;
+  letter-spacing: .38em;
+  white-space: nowrap;
+  animation: proofTicker 18s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes proofTicker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-22%); }
+}
+
+.proof-band li {
+  position: relative;
+  overflow: hidden;
+}
+
+.proof-band li::after {
+  content: "";
+  position: absolute;
+  left: -40%;
+  top: 0;
+  width: 35%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(94,239,255,.18), transparent);
+  animation: stepScan 3.8s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * .16s);
+}
+
+@keyframes stepScan {
+  0%, 28% { transform: translateX(0); opacity: 0; }
+  45% { opacity: 1; }
+  100% { transform: translateX(420%); opacity: 0; }
+}
