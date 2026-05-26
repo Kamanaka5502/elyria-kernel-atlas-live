@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Elyria Kernel Atlas — Samantha Revita</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="field-noise"></div>
+  <div class="aurora aurora-a"></div>
+  <div class="aurora aurora-b"></div>
+
+  <header class="hero">
+    <div class="eyebrow">Elyria Systems · Kernel Generator Atlas</div>
+    <h1>Elyria Kernel Atlas</h1>
+    <p class="subtitle">
+      Animated execution-governance surface for kernel generators, consequence corridors,
+      deterministic receipts, custody evidence, and protected mathematical boundaries.
+    </p>
+    <p class="byline">Prepared by <strong>Samantha Revita</strong></p>
+  </header>
+
+  <main class="layout">
+    <section class="orbital-stage" aria-label="Animated Elyria kernel field">
+      <div class="core">
+        <div class="core-ring ring-1"></div>
+        <div class="core-ring ring-2"></div>
+        <div class="core-ring ring-3"></div>
+        <div class="core-label">
+          <span>TRUE ZERO</span>
+          <small>pre-effect admissibility</small>
+        </div>
+      </div>
+
+      <div class="orbit orbit-1">
+        <div class="node n1" data-kernel="true-zero">0</div>
+        <div class="node n2" data-kernel="motion-envelope">E</div>
+        <div class="node n3" data-kernel="replay-receipt">R</div>
+      </div>
+      <div class="orbit orbit-2">
+        <div class="node n4" data-kernel="financial-motion">$</div>
+        <div class="node n5" data-kernel="software-motion">{ }</div>
+        <div class="node n6" data-kernel="semantic-execution">Σ</div>
+        <div class="node n7" data-kernel="custody-evidence">C</div>
+      </div>
+      <div class="orbit orbit-3">
+        <div class="node n8" data-kernel="accelerator">GPU</div>
+        <div class="node n9" data-kernel="scientific">Ψ</div>
+        <div class="node n10" data-kernel="regulatory">EU</div>
+        <div class="node n11" data-kernel="protected-math">∂</div>
+        <div class="node n12" data-kernel="install-kit">ZIP</div>
+      </div>
+
+      <svg class="pulse-lines" viewBox="0 0 900 900" aria-hidden="true">
+        <circle cx="450" cy="450" r="120"></circle>
+        <circle cx="450" cy="450" r="230"></circle>
+        <circle cx="450" cy="450" r="340"></circle>
+        <path d="M450 450 C360 280, 520 210, 680 330 S650 640, 450 450"></path>
+        <path d="M450 450 C620 420, 700 540, 600 690 S300 720, 450 450"></path>
+      </svg>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <span class="status-dot"></span>
+        <span>Live Kernel Detail</span>
+      </div>
+      <h2 id="kernel-title">True Zero Universal Layer</h2>
+      <p id="kernel-type" class="kernel-type">Origin Kernel</p>
+      <p id="kernel-summary">
+        The layer below execution where proposed motion is resolved before consequence binds.
+      </p>
+      <div class="io-grid">
+        <div>
+          <h3>Inputs</h3>
+          <ul id="kernel-inputs"></ul>
+        </div>
+        <div>
+          <h3>Outputs</h3>
+          <ul id="kernel-outputs"></ul>
+        </div>
+      </div>
+      <div class="receipt">
+        <span>Receipt Pulse</span>
+        <code id="receipt-code">ELYRIA-TRUE-ZERO-000</code>
+      </div>
+    </section>
+  </main>
+
+  <section class="cards">
+    {% for k in kernels %}
+    <button class="kernel-card" data-kernel="{{ k.id }}">
+      <span class="card-type">{{ k.type }}</span>
+      <strong>{{ k.title }}</strong>
+      <small>{{ k.summary }}</small>
+    </button>
+    {% endfor %}
+  </section>
+
+  <footer>
+    <p>Public-safe visual surface. Protected math, private invariants, and execution substrate are not exposed.</p>
+    <p>© Samantha Revita · Elyria Systems</p>
+  </footer>
+
+  <script>
+    window.KERNELS = {{ kernels | tojson }};
+  </script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
