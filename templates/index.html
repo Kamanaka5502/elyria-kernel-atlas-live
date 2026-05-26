@@ -5,6 +5,7 @@
   <title>Elyria Kernel Atlas — Samantha Revita</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/interactive.css">
 </head>
 <body>
   <div class="field-noise"></div>
@@ -96,7 +97,7 @@
     </div>
     <ol>
       {% for step in install_proof.steps %}
-      <li>{{ step }}</li>
+      <li style="--i: {{ loop.index0 }}">{{ step }}</li>
       {% endfor %}
     </ol>
   </section>
