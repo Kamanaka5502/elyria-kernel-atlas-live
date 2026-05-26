@@ -12,14 +12,26 @@
   <div class="aurora aurora-a"></div>
   <div class="aurora aurora-b"></div>
 
-  <header class="hero">
-    <div class="eyebrow">Elyria Systems · Kernel Generator Atlas</div>
+  <header class="hero hero-proof">
+    <div class="eyebrow">Elyria Systems · Consequence-Boundary Kernel Atlas</div>
     <h1>Elyria Kernel Atlas</h1>
+    <p class="hero-rule">Execution is not assumed. It is admitted.</p>
     <p class="subtitle">
-      Public visual atlas of Elyria kernel families and consequence-boundary proof concepts.
-      This is not the protected runtime substrate.
+      A public visual atlas of Elyria kernel families, consequence corridors, admissibility surfaces,
+      custody evidence, deterministic receipt concepts, and replay-facing proof structure.
     </p>
     <p class="byline">Prepared by <strong>Samantha Revita</strong></p>
+
+    <div class="hero-claims" aria-label="Core Elyria proof concepts">
+      <div><span>01</span><strong>Motion enters</strong><small>raw intent becomes governed envelope</small></div>
+      <div><span>02</span><strong>Boundary resolves</strong><small>admit · repair · escalate · refuse</small></div>
+      <div><span>03</span><strong>Receipt emits</strong><small>decision basis becomes inspectable</small></div>
+      <div><span>04</span><strong>Replay verifies</strong><small>proof survives review without exposing substrate</small></div>
+    </div>
+
+    <div class="safety-strip">
+      Public atlas only · Protected math, private invariants, scoring law, enforcement adapters, internal mechanics, and runtime substrate are not exposed.
+    </div>
   </header>
 
   <main class="layout">
@@ -89,19 +101,10 @@
     </section>
   </main>
 
-  <section class="proof-dock" aria-label="Compact installable proof dock">
-    <div class="proof-dock-title">
-      <span class="status-dot"></span>
-      <div>
-        <span class="card-type">Installable Layer Proof</span>
-        <strong>install → run → receipt → verify → replay → explain</strong>
-      </div>
-    </div>
-    <div class="proof-dock-steps">
-      {% for step in install_proof.steps %}
-      <span style="--i: {{ loop.index0 }}">{{ step }}</span>
-      {% endfor %}
-    </div>
+  <section class="proof-microbar" aria-label="Installable layer proof summary">
+    <span>Installable proof target</span>
+    <strong>install → run → receipt → verify → replay → explain</strong>
+    <em>public-facing proof path, not exposed substrate</em>
   </section>
 
   <section class="cards">
