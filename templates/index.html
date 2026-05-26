@@ -16,8 +16,8 @@
     <div class="eyebrow">Elyria Systems · Kernel Generator Atlas</div>
     <h1>Elyria Kernel Atlas</h1>
     <p class="subtitle">
-      Animated execution-governance surface for kernel generators, consequence corridors,
-      deterministic receipts, custody evidence, and protected mathematical boundaries.
+      Public visual atlas of Elyria kernel families and consequence-boundary proof concepts.
+      This is not the protected runtime substrate.
     </p>
     <p class="byline">Prepared by <strong>Samantha Revita</strong></p>
   </header>
@@ -89,17 +89,19 @@
     </section>
   </main>
 
-  <section class="proof-band">
-    <div>
-      <span class="card-type">Install proof surface</span>
-      <h2>{{ install_proof.title }}</h2>
-      <p>{{ install_proof.summary }}</p>
+  <section class="proof-dock" aria-label="Compact installable proof dock">
+    <div class="proof-dock-title">
+      <span class="status-dot"></span>
+      <div>
+        <span class="card-type">Installable Layer Proof</span>
+        <strong>install → run → receipt → verify → replay → explain</strong>
+      </div>
     </div>
-    <ol>
+    <div class="proof-dock-steps">
       {% for step in install_proof.steps %}
-      <li style="--i: {{ loop.index0 }}">{{ step }}</li>
+      <span style="--i: {{ loop.index0 }}">{{ step }}</span>
       {% endfor %}
-    </ol>
+    </div>
   </section>
 
   <section class="cards">
@@ -113,7 +115,7 @@
   </section>
 
   <footer>
-    <p>Public-safe visual surface. Protected math, private invariants, and execution substrate are not exposed.</p>
+    <p>Public visual atlas only. Protected math, private invariants, scoring law, enforcement adapters, internal kernel mechanics, and execution substrate are not exposed.</p>
     <p>© Samantha Revita · Elyria Systems</p>
   </footer>
 
