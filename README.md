@@ -1,10 +1,8 @@
-# Elyria Kernel Atlas — Animated Railway Build
+# Elyria Kernel Atlas
 
 Prepared for **Samantha Revita**.
 
-This is a public-safe animated web atlas for the Elyria kernel generators.
-
-It uses only the **Elyria** name. No Veritas branding is included.
+A public-safe animated web atlas for the Elyria kernel generators.
 
 ## What it shows
 
@@ -29,14 +27,12 @@ Open:
 http://127.0.0.1:5000
 ```
 
-## Railway deploy
+## Deploy
 
 1. Push this folder to GitHub.
-2. Go to Railway.
-3. New Project → Deploy from GitHub repo.
-4. Select the repo.
-5. Railway will detect Python/Nixpacks.
-6. Start command is already set in `railway.json`.
+2. Connect the repository to your deployment platform.
+3. Use the included Python app configuration.
+4. Start command is already set in `railway.json`.
 
 ## Safety boundary
 
