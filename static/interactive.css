@@ -129,48 +129,91 @@
 }
 
 .proof-band {
-  isolation: isolate;
+  display: none !important;
 }
 
-.proof-band::after {
-  content: "INSTALLABLE PROOF · RECEIPT · REPLAY · EXPLAINABILITY";
-  position: absolute;
-  left: -10%;
-  bottom: 12px;
-  width: 120%;
-  color: rgba(94,239,255,.16);
-  font-size: 11px;
-  letter-spacing: .38em;
-  white-space: nowrap;
-  animation: proofTicker 18s linear infinite;
-  pointer-events: none;
-  z-index: -1;
-}
-
-@keyframes proofTicker {
-  from { transform: translateX(0); }
-  to { transform: translateX(-22%); }
-}
-
-.proof-band li {
+.proof-dock {
+  width: min(1360px, 94vw);
+  margin: 18px auto 20px;
+  border: 1px solid rgba(255,211,106,.22);
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(255,211,106,.07), rgba(94,239,255,.045), rgba(167,139,250,.055));
+  box-shadow: 0 16px 52px rgba(0,0,0,.24), inset 0 0 36px rgba(255,211,106,.025);
+  padding: 16px;
+  display: grid;
+  grid-template-columns: minmax(260px, 420px) 1fr;
+  gap: 16px;
+  align-items: center;
   position: relative;
   overflow: hidden;
 }
 
-.proof-band li::after {
+.proof-dock::before {
   content: "";
   position: absolute;
-  left: -40%;
-  top: 0;
-  width: 35%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(94,239,255,.18), transparent);
-  animation: stepScan 3.8s ease-in-out infinite;
-  animation-delay: calc(var(--i, 0) * .16s);
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.065), transparent);
+  transform: translateX(-100%);
+  animation: dockScan 7s ease-in-out infinite;
+  pointer-events: none;
 }
 
-@keyframes stepScan {
-  0%, 28% { transform: translateX(0); opacity: 0; }
-  45% { opacity: 1; }
-  100% { transform: translateX(420%); opacity: 0; }
+@keyframes dockScan {
+  60%, 100% { transform: translateX(100%); }
+}
+
+.proof-dock-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.proof-dock-title strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.35;
+}
+
+.proof-dock-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.proof-dock-steps span {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.14);
+  border-radius: 999px;
+  padding: 8px 10px;
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.proof-dock-steps span::after {
+  content: "";
+  position: absolute;
+  left: -50%;
+  top: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(94,239,255,.18), transparent);
+  animation: compactStepScan 4.2s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * .14s);
+}
+
+@keyframes compactStepScan {
+  0%, 34% { transform: translateX(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(390%); opacity: 0; }
+}
+
+@media (max-width: 950px) {
+  .proof-dock { grid-template-columns: 1fr; }
+  .proof-dock-steps { justify-content: flex-start; }
 }
