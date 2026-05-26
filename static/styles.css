@@ -99,6 +99,21 @@ h1 {
   overflow: hidden;
   box-shadow: inset 0 0 90px rgba(94,239,255,.06), 0 24px 80px rgba(0,0,0,.34);
 }
+.orbital-stage::before {
+  content: "";
+  position: absolute;
+  inset: -45%;
+  background: conic-gradient(from 90deg, transparent, rgba(94,239,255,.10), transparent, rgba(255,211,106,.08), transparent);
+  animation: fieldSweep 18s linear infinite;
+}
+.orbital-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 22%, rgba(94,239,255,.035) 23%, transparent 24%, transparent 42%, rgba(255,211,106,.04) 43%, transparent 44%);
+  pointer-events: none;
+}
+@keyframes fieldSweep { to { transform: rotate(360deg); } }
 
 .core {
   position: absolute;
@@ -108,6 +123,7 @@ h1 {
   transform: translate(-50%, -50%);
   display: grid;
   place-items: center;
+  z-index: 3;
 }
 .core-ring {
   position: absolute;
@@ -131,9 +147,7 @@ h1 {
   font-weight: 900;
   color: var(--gold);
 }
-.core-label small {
-  color: var(--muted);
-}
+.core-label small { color: var(--muted); }
 
 .orbit {
   position: absolute;
@@ -142,6 +156,7 @@ h1 {
   border-radius: 999px;
   transform: translate(-50%, -50%);
   pointer-events: none;
+  z-index: 2;
 }
 .orbit-1 { width: 320px; height: 320px; animation: spin 18s linear infinite; }
 .orbit-2 { width: 520px; height: 520px; animation: spinReverse 26s linear infinite; }
@@ -190,6 +205,7 @@ h1 {
   width: 100%;
   height: 100%;
   opacity: .45;
+  z-index: 1;
 }
 .pulse-lines circle, .pulse-lines path {
   fill: none;
@@ -225,27 +241,11 @@ h1 {
   background: var(--green);
   box-shadow: 0 0 18px var(--green);
 }
-.panel h2 {
-  font-size: 34px;
-  margin: 20px 0 4px;
-}
-.kernel-type {
-  color: var(--cyan);
-  margin-top: 0;
-}
-#kernel-summary {
-  color: var(--muted);
-  font-size: 18px;
-  line-height: 1.55;
-}
-.io-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-}
-.io-grid h3 {
-  color: var(--gold);
-}
+.panel h2 { font-size: 34px; margin: 20px 0 4px; }
+.kernel-type { color: var(--cyan); margin-top: 0; }
+#kernel-summary { color: var(--muted); font-size: 18px; line-height: 1.55; }
+.io-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.io-grid h3 { color: var(--gold); }
 ul { padding-left: 18px; color: var(--muted); }
 li { margin: 8px 0; }
 
@@ -260,6 +260,53 @@ li { margin: 8px 0; }
   gap: 14px;
 }
 .receipt code { color: var(--green); }
+
+.proof-band {
+  width: min(1360px, 94vw);
+  margin: 34px auto 20px;
+  border: 1px solid rgba(255,211,106,.28);
+  border-radius: 30px;
+  background: linear-gradient(135deg, rgba(255,211,106,.10), rgba(94,239,255,.06), rgba(167,139,250,.08));
+  box-shadow: 0 28px 90px rgba(0,0,0,.30), inset 0 0 80px rgba(255,211,106,.04);
+  padding: 28px;
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(320px, 1fr);
+  gap: 26px;
+  position: relative;
+  overflow: hidden;
+}
+.proof-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
+  transform: translateX(-100%);
+  animation: scan 5.4s ease-in-out infinite;
+}
+@keyframes scan { 60%, 100% { transform: translateX(100%); } }
+.proof-band h2 { margin: 8px 0 8px; font-size: clamp(28px, 4vw, 48px); }
+.proof-band p { color: var(--muted); font-size: 18px; line-height: 1.5; }
+.proof-band ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: proofstep;
+  display: grid;
+  gap: 10px;
+}
+.proof-band li {
+  counter-increment: proofstep;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.18);
+  border-radius: 16px;
+  padding: 12px 14px;
+  color: var(--text);
+}
+.proof-band li::before {
+  content: counter(proofstep, decimal-leading-zero) " · ";
+  color: var(--gold);
+  font-weight: 900;
+}
 
 .cards {
   width: min(1360px, 94vw);
@@ -290,15 +337,8 @@ li { margin: 8px 0; }
   text-transform: uppercase;
   letter-spacing: .12em;
 }
-.kernel-card strong {
-  display: block;
-  font-size: 18px;
-  margin: 10px 0;
-}
-.kernel-card small {
-  color: var(--muted);
-  line-height: 1.45;
-}
+.kernel-card strong { display: block; font-size: 18px; margin: 10px 0; }
+.kernel-card small { color: var(--muted); line-height: 1.45; }
 
 footer {
   text-align: center;
@@ -313,4 +353,5 @@ footer {
   .orbit-3 { width: 520px; height: 520px; }
   .orbit-2 { width: 390px; height: 390px; }
   .orbit-1 { width: 260px; height: 260px; }
+  .proof-band { grid-template-columns: 1fr; }
 }
