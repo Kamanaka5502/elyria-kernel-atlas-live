@@ -40,8 +40,8 @@
       </div>
       <div class="orbit orbit-2">
         <div class="node n4" data-kernel="financial-motion">$</div>
-        <div class="node n5" data-kernel="software-motion">{ }</div>
-        <div class="node n6" data-kernel="semantic-execution">Σ</div>
+        <div class="node n5" data-kernel="clinical-ai">CL</div>
+        <div class="node n6" data-kernel="software-motion">{ }</div>
         <div class="node n7" data-kernel="custody-evidence">C</div>
       </div>
       <div class="orbit orbit-3">
@@ -87,6 +87,19 @@
       </div>
     </section>
   </main>
+
+  <section class="proof-band">
+    <div>
+      <span class="card-type">Install proof surface</span>
+      <h2>{{ install_proof.title }}</h2>
+      <p>{{ install_proof.summary }}</p>
+    </div>
+    <ol>
+      {% for step in install_proof.steps %}
+      <li>{{ step }}</li>
+      {% endfor %}
+    </ol>
+  </section>
 
   <section class="cards">
     {% for k in kernels %}
