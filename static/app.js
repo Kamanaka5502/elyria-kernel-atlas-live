@@ -12,6 +12,10 @@ const orbitalStage = document.querySelector(".orbital-stage");
 const cards = Array.from(document.querySelectorAll(".kernel-card"));
 const nodes = Array.from(document.querySelectorAll(".node"));
 
+let idx = 0;
+let manualMode = false;
+let manualModeTimer = null;
+
 function flashElement(el, className) {
   if (!el) return;
   el.classList.remove(className);
@@ -27,20 +31,33 @@ function getNodeById(id) {
   return nodes.find(node => node.dataset.kernel === id);
 }
 
+function removeDynamicDetails(card) {
+  card.querySelectorAll(".live-badge, .card-trace, .selected-detail, .selected-verdict").forEach(el => el.remove());
+}
+
+function setManualMode() {
+  manualMode = true;
+  clearTimeout(manualModeTimer);
+  manualModeTimer = setTimeout(() => {
+    manualMode = false;
+  }, 45000);
+}
+
 function setActiveCard(id) {
   cards.forEach(card => {
     const active = card.dataset.kernel === id;
     card.classList.toggle("active-card", active);
+    card.classList.remove("preview-card");
     card.setAttribute("aria-pressed", active ? "true" : "false");
 
-    let badge = card.querySelector(".live-badge");
-    if (active && !badge) {
-      badge = document.createElement("span");
+    if (!active) removeDynamicDetails(card);
+
+    if (active && !card.querySelector(".live-badge")) {
+      const badge = document.createElement("span");
       badge.className = "live-badge";
-      badge.textContent = "ACTIVE";
+      badge.textContent = "SELECTED";
       card.appendChild(badge);
     }
-    if (!active && badge) badge.remove();
   });
 
   nodes.forEach(node => {
@@ -61,8 +78,34 @@ function injectCardTrace(card, kernel) {
   trace.innerHTML = "<span>" + input + "</span><b>→</b><span>" + output + "</span>";
 }
 
+function injectSelectedDetails(card, kernel) {
+  if (!card || !kernel) return;
+  let detail = card.querySelector(".selected-detail");
+  if (!detail) {
+    detail = document.createElement("div");
+    detail.className = "selected-detail";
+    card.appendChild(detail);
+  }
+
+  const inputList = (kernel.inputs || []).slice(0, 3).map(x => "<li>" + x + "</li>").join("");
+  const outputList = (kernel.outputs || []).slice(0, 3).map(x => "<li>" + x + "</li>").join("");
+  detail.innerHTML = "<div><b>Inputs</b><ul>" + inputList + "</ul></div><div><b>Outputs</b><ul>" + outputList + "</ul></div>";
+
+  let verdict = card.querySelector(".selected-verdict");
+  if (!verdict) {
+    verdict = document.createElement("div");
+    verdict.className = "selected-verdict";
+    card.appendChild(verdict);
+  }
+  verdict.textContent = "Active corridor: " + kernel.title;
+}
+
 function renderKernel(id, source = "manual") {
   const k = byId[id] || kernels[0];
+  if (!k) return;
+
+  if (source === "manual") setManualMode();
+
   title.textContent = k.title;
   type.textContent = k.type;
   summary.textContent = k.summary;
@@ -82,12 +125,15 @@ function renderKernel(id, source = "manual") {
     outputs.appendChild(li);
   });
 
-  receipt.textContent = "ELYRIA-" + k.id.toUpperCase().replaceAll("-", "_") + "-" + Math.floor(Date.now() / 1000);
+  receipt.textContent = "ELYRIA-" + k.id.toUpperCase().replace(/-/g, "_") + "-" + Math.floor(Date.now() / 1000);
 
   setActiveCard(k.id);
-  injectCardTrace(getCardById(k.id), k);
+  const activeCard = getCardById(k.id);
+  injectCardTrace(activeCard, k);
+  injectSelectedDetails(activeCard, k);
   flashElement(panel, "panel-flash");
   flashElement(orbitalStage, "stage-flash");
+  flashElement(activeCard, "card-selected-flash");
 
   const activeNode = getNodeById(k.id);
   if (activeNode) flashElement(activeNode, "node-flash");
@@ -115,9 +161,8 @@ nodes.forEach(node => {
   node.addEventListener("click", () => renderKernel(node.dataset.kernel, "manual"));
 });
 
-let idx = 0;
 setInterval(() => {
-  if (!kernels.length) return;
+  if (!kernels.length || manualMode) return;
   const hovered = document.querySelector(".kernel-card:hover, .node:hover");
   if (hovered) return;
   renderKernel(kernels[idx % kernels.length].id, "auto");
