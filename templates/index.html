@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="/static/interactive.css">
   <link rel="stylesheet" href="/static/frontpage.css">
   <link rel="stylesheet" href="/static/harmonic-lattice.css">
+  <link rel="stylesheet" href="/static/scanner.css">
 </head>
 <body>
   <div class="field-noise"></div>
@@ -118,6 +119,69 @@
     </section>
   </main>
 
+  <section class="scanner-wrap" id="scanner" aria-label="AI Execution Governance Risk Scanner">
+    <div class="scanner-head">
+      <div>
+        <span class="scanner-kicker">Executive AI Governance Assessment</span>
+        <h2>AI Execution Governance Risk Scanner</h2>
+        <p>Find where AI governance stops before consequence begins. This public-safe scanner helps organizations identify whether AI systems can create operational, financial, legal, clinical, or organizational consequence before admissibility is resolved.</p>
+      </div>
+      <div class="scanner-cta-box">
+        <strong>Boundary risk is not output risk.</strong>
+        <p>Use the scanner to locate consequence exposure, weak refusal paths, receipt gaps, authority drift, custody breaks, and replay weakness.</p>
+        <div class="scanner-actions">
+          <a class="scan-btn" href="#scanner-form">Start the Scanner</a>
+          <a class="review-btn" href="mailto:samgreenrevita@gmail.com?subject=Elyria%20AI%20Governance%20Review">Book a Review</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="scanner-grid">
+      <form class="scanner-questions" id="scanner-form">
+        <div class="scan-question">
+          <div><label>Can AI output trigger real consequence?</label><small>Operational, financial, legal, clinical, staffing, access, or institutional effect.</small></div>
+          <select name="consequence"><option value="0">No / advisory only</option><option value="1">Indirectly</option><option value="2">Yes, with review</option><option value="3">Yes, directly</option></select>
+        </div>
+        <div class="scan-question">
+          <div><label>Is governance pre-effect or post-event?</label><small>Does admissibility bind before consequence forms?</small></div>
+          <select name="preeffect"><option value="0">Pre-effect gate</option><option value="1">Mixed</option><option value="2">Mostly post-event</option><option value="3">After consequence</option></select>
+        </div>
+        <div class="scan-question">
+          <div><label>Is authority rechecked at execution time?</label><small>Standing, delegation, revocation, scope, and changed conditions.</small></div>
+          <select name="authority"><option value="0">Always</option><option value="1">Partially</option><option value="2">Weakly</option><option value="3">No live check</option></select>
+        </div>
+        <div class="scan-question">
+          <div><label>Is evidence custody preserved?</label><small>Source, freshness, transformation history, and chain continuity.</small></div>
+          <select name="custody"><option value="0">Yes</option><option value="1">Partial</option><option value="2">Unclear</option><option value="3">No reliable custody</option></select>
+        </div>
+        <div class="scan-question">
+          <div><label>Are receipts decision-basis receipts?</label><small>Not just logs — state, policy, authority, input, and decision basis.</small></div>
+          <select name="receipts"><option value="0">Yes</option><option value="1">Somewhat</option><option value="2">Mostly logs</option><option value="3">No meaningful receipt</option></select>
+        </div>
+        <div class="scan-question">
+          <div><label>Can the decision basis be replayed?</label><small>Same input, same reference state, same outcome, same refusal behavior.</small></div>
+          <select name="replay"><option value="0">Yes</option><option value="1">Partially</option><option value="2">Outcome only</option><option value="3">No replay</option></select>
+        </div>
+        <div class="scan-question">
+          <div><label>What happens under uncertainty?</label><small>Does the system fail closed, escalate, or continue anyway?</small></div>
+          <select name="refusal"><option value="0">Fail closed</option><option value="1">Escalate</option><option value="2">Ambiguous</option><option value="3">Continue anyway</option></select>
+        </div>
+        <button class="scan-btn" type="submit">Run Assessment</button>
+      </form>
+
+      <aside class="scanner-result">
+        <div class="risk-ring" id="risk-ring"><div class="risk-score"><strong id="risk-score">0</strong><span>risk score</span></div></div>
+        <div class="risk-label" id="risk-label">LOW SURFACE RISK</div>
+        <div class="risk-summary" id="risk-summary">Answer the questions to classify public execution-governance exposure.</div>
+        <h3>Boundary Flags</h3>
+        <div class="flag-list" id="flag-list"></div>
+        <h3>Recommended Next Checks</h3>
+        <div class="recommendation-list" id="recommendation-list"></div>
+        <div class="scanner-boundary">Public diagnostic only. This does not certify compliance, safety, deployment readiness, clinical validity, legal sufficiency, or formal admissibility. Protected math and execution substrate remain withheld.</div>
+      </aside>
+    </div>
+  </section>
+
   <section class="harmonic-lattice-wrap" aria-label="Public harmonic lattice visualization">
     <div class="harmonic-lattice-head">
       <div>
@@ -170,5 +234,6 @@
     window.KERNELS = {{ kernels | tojson }};
   </script>
   <script src="/static/app.js"></script>
+  <script src="/static/scanner.js"></script>
 </body>
 </html>
