@@ -1,0 +1,169 @@
+.harmonic-lattice-wrap {
+  width: min(1360px, 94vw);
+  margin: 18px auto 26px;
+  border: 1px solid rgba(94,239,255,.18);
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(94,239,255,.045), rgba(255,211,106,.035), rgba(167,139,250,.045));
+  box-shadow: 0 20px 70px rgba(0,0,0,.25), inset 0 0 60px rgba(94,239,255,.025);
+  overflow: hidden;
+  position: relative;
+  padding: 18px;
+}
+
+.harmonic-lattice-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -60%;
+  background: conic-gradient(from 180deg, transparent, rgba(94,239,255,.08), transparent, rgba(255,211,106,.06), transparent, rgba(167,139,250,.06), transparent);
+  animation: latticeField 34s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes latticeField {
+  to { transform: rotate(360deg); }
+}
+
+.harmonic-lattice-head,
+.harmonic-lattice {
+  position: relative;
+  z-index: 1;
+}
+
+.harmonic-lattice-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 18px;
+  margin-bottom: 14px;
+}
+
+.harmonic-lattice-head span {
+  color: var(--cyan);
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.harmonic-lattice-head h2 {
+  margin: 6px 0 0;
+  font-size: clamp(24px, 3vw, 42px);
+  letter-spacing: -.05em;
+}
+
+.harmonic-lattice-head p {
+  margin: 0;
+  color: var(--muted);
+  max-width: 560px;
+  line-height: 1.45;
+  text-align: right;
+}
+
+.harmonic-lattice {
+  position: relative;
+  height: 330px;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at center, rgba(94,239,255,.07), transparent 32%),
+    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: auto, 42px 42px, 42px 42px;
+  overflow: hidden;
+}
+
+.harmonic-lattice svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .82;
+}
+
+.lattice-line {
+  stroke: rgba(94,239,255,.26);
+  stroke-width: 1.4;
+  stroke-dasharray: 7 11;
+  animation: latticeDash 9s linear infinite;
+}
+
+.lattice-line.gold { stroke: rgba(255,211,106,.30); animation-duration: 13s; }
+.lattice-line.violet { stroke: rgba(167,139,250,.28); animation-duration: 16s; }
+
+@keyframes latticeDash {
+  to { stroke-dashoffset: -180; }
+}
+
+.lattice-node {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, var(--gold), rgba(94,239,255,.72), transparent 72%);
+  box-shadow: 0 0 18px rgba(255,211,106,.36), 0 0 34px rgba(94,239,255,.18);
+  animation: latticeNodePulse 2.6s ease-in-out infinite;
+}
+
+.lattice-node::after {
+  content: attr(data-label);
+  position: absolute;
+  left: 18px;
+  top: -8px;
+  color: var(--muted);
+  font-size: 11px;
+  white-space: nowrap;
+  letter-spacing: .05em;
+}
+
+.lattice-node.n-a { left: 17%; top: 30%; animation-delay: 0s; }
+.lattice-node.n-b { left: 34%; top: 64%; animation-delay: .3s; }
+.lattice-node.n-c { left: 50%; top: 36%; animation-delay: .6s; }
+.lattice-node.n-d { left: 67%; top: 66%; animation-delay: .9s; }
+.lattice-node.n-e { left: 82%; top: 32%; animation-delay: 1.2s; }
+.lattice-node.n-f { left: 50%; top: 82%; animation-delay: 1.5s; }
+
+@keyframes latticeNodePulse {
+  50% { transform: translate(-50%, -50%) scale(1.35); filter: brightness(1.35); }
+}
+
+.lattice-core-tag {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(255,211,106,.35);
+  background: rgba(0,0,0,.34);
+  border-radius: 999px;
+  padding: 10px 14px;
+  color: var(--gold);
+  font-weight: 900;
+  letter-spacing: .12em;
+  font-size: 12px;
+  box-shadow: 0 0 28px rgba(255,211,106,.16);
+  animation: coreTagGlow 3.4s ease-in-out infinite;
+}
+
+@keyframes coreTagGlow {
+  50% { box-shadow: 0 0 44px rgba(255,211,106,.30), 0 0 20px rgba(94,239,255,.18); }
+}
+
+.harmonic-equation {
+  position: absolute;
+  right: 18px;
+  bottom: 14px;
+  color: rgba(238,248,255,.72);
+  font-size: 12px;
+  letter-spacing: .06em;
+  background: rgba(0,0,0,.24);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 999px;
+  padding: 8px 11px;
+}
+
+@media (max-width: 850px) {
+  .harmonic-lattice-head { display: block; }
+  .harmonic-lattice-head p { text-align: left; margin-top: 8px; }
+  .harmonic-lattice { height: 280px; }
+  .lattice-node::after { display: none; }
+}
