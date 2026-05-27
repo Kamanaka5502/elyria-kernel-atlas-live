@@ -1,4 +1,5 @@
 const scannerForm = document.getElementById("scanner-form");
+const resetScannerBtn = document.getElementById("reset-scanner");
 const riskRing = document.getElementById("risk-ring");
 const riskScore = document.getElementById("risk-score");
 const riskLabel = document.getElementById("risk-label");
@@ -129,11 +130,22 @@ function scoreScanner() {
   });
 }
 
+function resetScanner() {
+  if (!scannerForm) return;
+  scannerForm.reset();
+  scoreScanner();
+  const firstSelect = scannerForm.querySelector("select");
+  if (firstSelect) firstSelect.focus({ preventScroll: true });
+}
+
 if (scannerForm) {
   scannerForm.addEventListener("change", scoreScanner);
   scannerForm.addEventListener("submit", event => {
     event.preventDefault();
     scoreScanner();
   });
+  if (resetScannerBtn) {
+    resetScannerBtn.addEventListener("click", resetScanner);
+  }
   scoreScanner();
 }
