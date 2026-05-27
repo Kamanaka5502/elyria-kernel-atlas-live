@@ -1,8 +1,10 @@
 # Elyria Kernel Atlas
 
-Prepared for **Samantha Revita**.
+Prepared by **Samantha Revita and Terry Snyder / Elyria Systems**.
 
-A public-safe animated web atlas for the Elyria kernel generators.
+Public visual atlas of Elyria kernel families, consequence corridors, deterministic receipt concepts, custody evidence concepts, and protected mathematical boundaries.
+
+This repository is not the protected runtime substrate and does not expose private invariants, scoring law, enforcement adapters, internal kernel mechanics, or execution substrate.
 
 ## What it shows
 
@@ -12,7 +14,8 @@ A public-safe animated web atlas for the Elyria kernel generators.
 - Live kernel detail panel
 - Animated receipt pulses
 - Public-safe kernel summaries
-- Samantha Revita attribution
+- Corridor-family taxonomy
+- Samantha Revita and Terry Snyder attribution
 
 ## Local run
 
@@ -32,7 +35,7 @@ http://127.0.0.1:5000
 1. Push this folder to GitHub.
 2. Connect the repository to your deployment platform.
 3. Use the included Python app configuration.
-4. Start command is already set in `railway.json`.
+4. Use the configured production start command.
 
 ## Safety boundary
 
