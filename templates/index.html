@@ -120,23 +120,23 @@
   </main>
 
   <section class="scanner-wrap" id="scanner" aria-label="AI Execution Governance Risk Scanner">
-    <div class="scanner-head">
+    <div class="scanner-head compact-scanner-head">
       <div>
         <span class="scanner-kicker">Executive AI Governance Assessment</span>
         <h2>AI Execution Governance Risk Scanner</h2>
-        <p>Find where AI governance stops before consequence begins. This public-safe scanner helps organizations identify whether AI systems can create operational, financial, legal, clinical, or organizational consequence before admissibility is resolved.</p>
+        <p>Find where AI governance stops before consequence begins. This public-safe scanner classifies whether AI-assisted motion can create operational, financial, legal, clinical, or organizational consequence before admissibility is resolved.</p>
       </div>
-      <div class="scanner-cta-box">
+      <div class="scanner-cta-box compact-cta">
         <strong>Boundary risk is not output risk.</strong>
-        <p>Use the scanner to locate consequence exposure, weak refusal paths, receipt gaps, authority drift, custody breaks, and replay weakness.</p>
-        <div class="scanner-actions">
+        <p>Review by <b>Samantha Revita</b> and <b>Terry Snyder</b>: we inspect where output becomes consequence, whether refusal holds, and what receipt/replay proof is missing.</p>
+        <div class="scanner-actions persistent-actions">
           <a class="scan-btn" href="#scanner-form">Start the Scanner</a>
           <a class="review-btn" href="mailto:elyriaveritas@outlook.com?subject=Elyria%20AI%20Governance%20Review">Book a Review</a>
         </div>
       </div>
     </div>
 
-    <div class="scanner-grid">
+    <div class="scanner-grid compact-scanner-grid">
       <form class="scanner-questions" id="scanner-form">
         <div class="scan-question">
           <div><label>Can AI output trigger real consequence?</label><small>Operational, financial, legal, clinical, staffing, access, or institutional effect.</small></div>
@@ -166,10 +166,14 @@
           <div><label>What happens under uncertainty?</label><small>Does the system fail closed, escalate, or continue anyway?</small></div>
           <select name="refusal"><option value="0">Fail closed</option><option value="1">Escalate</option><option value="2">Ambiguous</option><option value="3">Continue anyway</option></select>
         </div>
-        <button class="scan-btn" type="submit">Run Assessment</button>
+        <div class="scanner-form-actions">
+          <button class="scan-btn" type="submit">Run Assessment</button>
+          <button class="reset-btn" type="button" id="reset-scanner">Reset</button>
+          <a class="review-btn sticky-review" href="mailto:elyriaveritas@outlook.com?subject=Elyria%20AI%20Governance%20Review">Book a Review</a>
+        </div>
       </form>
 
-      <aside class="scanner-result">
+      <aside class="scanner-result compact-result">
         <div class="risk-ring" id="risk-ring"><div class="risk-score"><strong id="risk-score">0</strong><span>risk score</span></div></div>
         <div class="risk-label" id="risk-label">LOW SURFACE RISK</div>
         <div class="risk-summary" id="risk-summary">Answer the questions to classify public execution-governance exposure.</div>
@@ -177,6 +181,7 @@
         <div class="flag-list" id="flag-list"></div>
         <h3>Recommended Next Checks</h3>
         <div class="recommendation-list" id="recommendation-list"></div>
+        <div class="scanner-review-note"><strong>What happens next:</strong> a review request opens an email to Elyria Systems. We can scope a boundary review, proof-surface review, or deeper protected technical session separately.</div>
         <div class="scanner-boundary">Public diagnostic only. This does not certify compliance, safety, deployment readiness, clinical validity, legal sufficiency, or formal admissibility. Protected math and execution substrate remain withheld.</div>
       </aside>
     </div>
