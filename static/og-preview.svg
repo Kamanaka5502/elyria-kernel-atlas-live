@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="g1" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#12333d"/>
+      <stop offset="45%" stop-color="#071117"/>
+      <stop offset="100%" stop-color="#020407"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffe08a"/>
+      <stop offset="1" stop-color="#43f5ff"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g1)"/>
+  <rect x="42" y="42" width="1116" height="546" rx="36" fill="none" stroke="#ffe08a" stroke-opacity="0.38" stroke-width="2"/>
+  <circle cx="600" cy="320" r="160" fill="none" stroke="#43f5ff" stroke-opacity="0.18" stroke-width="2"/>
+  <circle cx="600" cy="320" r="235" fill="none" stroke="#ffe08a" stroke-opacity="0.14" stroke-width="2"/>
+  <circle cx="600" cy="320" r="305" fill="none" stroke="#a78bfa" stroke-opacity="0.13" stroke-width="2"/>
+  <path d="M160 360 C310 120 470 500 600 300 S910 120 1040 350" fill="none" stroke="#43f5ff" stroke-width="5" stroke-linecap="round" stroke-opacity="0.85" filter="url(#glow)"/>
+  <path d="M230 210 C360 430 490 140 600 300 S830 470 980 190" fill="none" stroke="#ffe08a" stroke-width="4" stroke-linecap="round" stroke-opacity="0.72" filter="url(#glow)"/>
+  <g filter="url(#glow)">
+    <circle cx="160" cy="360" r="10" fill="#ffe08a"/>
+    <circle cx="360" cy="250" r="10" fill="#43f5ff"/>
+    <circle cx="600" cy="300" r="14" fill="#ffffff"/>
+    <circle cx="840" cy="230" r="10" fill="#43f5ff"/>
+    <circle cx="1040" cy="350" r="10" fill="#ffe08a"/>
+  </g>
+  <text x="82" y="118" fill="#43f5ff" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="700" letter-spacing="5">ELYRIA SYSTEMS</text>
+  <text x="82" y="242" fill="#ffffff" font-family="Inter,Arial,sans-serif" font-size="76" font-weight="900" letter-spacing="-4">Elyria Kernel Atlas</text>
+  <text x="82" y="306" fill="#ffe08a" font-family="Inter,Arial,sans-serif" font-size="34" font-weight="800">Execution is not assumed. It is admitted.</text>
+  <text x="82" y="382" fill="#d8e8ee" font-family="Inter,Arial,sans-serif" font-size="28" font-weight="500">Consequence-boundary governance · risk scanner · receipts · replay</text>
+  <text x="82" y="492" fill="#9fb4bd" font-family="Inter,Arial,sans-serif" font-size="24">Built by Samantha Revita and Terry Snyder</text>
+  <text x="82" y="536" fill="#9fb4bd" font-family="Inter,Arial,sans-serif" font-size="20">Public atlas only · protected substrate withheld</text>
+</svg>
