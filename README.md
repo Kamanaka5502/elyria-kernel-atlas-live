@@ -2,9 +2,17 @@
 
 Prepared by **Samantha Revita and Terry Snyder / Elyria Systems**.
 
-Public visual atlas of Elyria kernel families, consequence corridors, deterministic receipt concepts, custody evidence concepts, and protected mathematical boundaries.
+Public visual atlas of Elyria kernel families, consequence corridors, deterministic receipt concepts, custody evidence concepts, and public-safe boundary language.
 
-This repository is not the protected runtime substrate and does not expose private invariants, scoring law, enforcement adapters, internal kernel mechanics, or execution substrate.
+This repository is a visual product surface. It is not the full implementation layer.
+
+## Start here
+
+- [START_HERE.md](START_HERE.md)
+- [ARCHITECTURE.md](ARCHITECTURE.md)
+- [PUBLIC_BOUNDARY.md](PUBLIC_BOUNDARY.md)
+- [VERIFY.md](VERIFY.md)
+- [FAQ.md](FAQ.md)
 
 ## What it shows
 
@@ -30,6 +38,13 @@ Open:
 http://127.0.0.1:5000
 ```
 
+## Read-only endpoints
+
+```text
+/api/kernels
+/api/install-proof
+```
+
 ## Deploy
 
 1. Push this folder to GitHub.
@@ -37,6 +52,6 @@ http://127.0.0.1:5000
 3. Use the included Python app configuration.
 4. Use the configured production start command.
 
-## Safety boundary
+## Boundary
 
-This is a visual product surface. It does not expose private math, protected invariants, scoring law, or internal execution substrate.
+The atlas shows the public map of Elyria kernel categories while keeping the implementation layer separate.
