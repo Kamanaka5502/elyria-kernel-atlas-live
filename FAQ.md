@@ -43,4 +43,4 @@ Yes. They return public summaries.
 
 ## Who prepared it?
 
-Samantha Revita and Terry Snyder / Elyria Systems.
+Samantha Revita / Elyria Systems.

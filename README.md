@@ -1,6 +1,6 @@
 # Elyria Kernel Atlas
 
-Prepared by **Samantha Revita and Terry Snyder / Elyria Systems**.
+Prepared by **Samantha Revita / Elyria Systems**.
 
 Public visual atlas of Elyria kernel families, consequence corridors, deterministic receipt concepts, custody evidence concepts, and public-safe boundary language.
 
@@ -24,7 +24,7 @@ This repository is a visual product surface. It is not the full implementation l
 - Animated receipt pulses
 - Public-safe kernel summaries
 - Corridor-family taxonomy
-- Samantha Revita and Terry Snyder attribution
+- Samantha Revita attribution
 
 ## Local run
 
