@@ -12,6 +12,7 @@ This repository is a visual product surface. It is not the full implementation l
 - [ARCHITECTURE.md](ARCHITECTURE.md)
 - [PUBLIC_BOUNDARY.md](PUBLIC_BOUNDARY.md)
 - [VERIFY.md](VERIFY.md)
+- [DEPLOYMENT.md](DEPLOYMENT.md)
 - [FAQ.md](FAQ.md)
 
 ## What it shows
@@ -44,6 +45,14 @@ http://127.0.0.1:5000
 /api/kernels
 /api/install-proof
 ```
+
+## Production-style start
+
+```bash
+gunicorn app:app --bind 0.0.0.0:$PORT
+```
+
+A `Procfile` is included for compatible deployment platforms.
 
 ## Deploy
 
